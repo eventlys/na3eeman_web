@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-cream text-almost-black transition-colors duration-300;
+    font-family: 'Cairo', 'Tajawal', sans-serif;
+  }
+
+  .dark body {
+    @apply bg-almost-black text-cream;
+  }
+  
+  [dir="ltr"] body {
+    font-family: 'Inter', 'Poppins', sans-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:from-blue-700 hover:to-blue-800;
+  }
+  
+  .btn-secondary {
+    @apply px-8 py-4 bg-gradient-to-r from-pink-500 to-pink-600 text-white font-bold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:from-pink-600 hover:to-pink-700;
+  }
+  
+  .btn-outline {
+    @apply px-8 py-4 border-2 border-blue-500 text-blue-600 font-bold rounded-lg hover:bg-blue-500 hover:text-white transition-all duration-300;
+  }
+
+  .dark .btn-outline {
+    @apply border-pink-400 text-pink-400 hover:bg-pink-400 hover:text-almost-black;
+  }
+  
+  .card {
+    @apply bg-white dark:bg-almost-black/50 border border-transparent dark:border-white/10 rounded-2xl shadow-lg p-8 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2;
+  }
+  
+  .section-title {
+    @apply text-4xl md:text-5xl font-bold text-almost-black dark:text-cream mb-6;
+  }
+  
+  .section-subtitle {
+    @apply text-xl md:text-2xl text-almost-black/70 dark:text-cream/70 mb-12;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-pink-500 to-opal-500;
+  }
+  
+  .bg-gradient-hero {
+    @apply bg-gradient-to-br from-blue-600/10 via-pink-500/10 to-opal-500/10;
+    background-size: 200% 200%;
+    animation: gradientShift 6s ease infinite;
+  }
+
+  .dark .bg-gradient-hero {
+    @apply bg-gradient-to-br from-blue-900/40 via-pink-900/40 to-opal-900/40;
+  }
+  
+  .pattern-dots {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d097ae' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+}
+
+/* Smooth RTL/LTR transition */
+[dir="rtl"] {
+  direction: rtl;
+}
+
+[dir="ltr"] {
+  direction: ltr;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #6B46C1;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #5738A0;
+}
+
+/* Floating animation for particles */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-30px) rotate(5deg); }
+  66% { transform: translateY(-15px) rotate(-5deg); }
+}
+
+.animate-float-slow {
+  animation: float-slow 8s ease-in-out infinite;
+}
+
+/* Phone mockup 3D tilt effect */
+.phone-mockup {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.phone-mockup:hover {
+  transform: perspective(1000px) rotateY(5deg) rotateX(5deg);
+}
+
+/* QR code scan effect */
+.qr-scan-effect {
+  position: relative;
+}
+
+.qr-scan-effect::before {
+  content: '';
+  position: absolute;
+  inset: -20px;
+  border-radius: 16px;
+  background: radial-gradient(circle, rgba(107, 70, 193, 0.3) 0%, transparent 70%);
+  animation: pulseRing 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Testimonial card styling */
+.testimonial-card {
+  @apply bg-white rounded-xl shadow-md p-6 relative;
+  border-right: 4px solid #D4AF37;
+}
+
+[dir="ltr"] .testimonial-card {
+  border-right: none;
+  border-left: 4px solid #D4AF37;
+}
+
+/* Stats counter */
+.stat-number {
+  @apply text-5xl md:text-6xl font-bold text-gradient;
+}
+
+/* Mobile menu animation */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile-menu-enter {
+  animation: slideDown 0.3s ease-out;
+}
