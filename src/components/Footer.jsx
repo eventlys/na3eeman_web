@@ -1,4 +1,5 @@
 import { useLanguage } from '../hooks/useLanguage';
+import logoImg from '../assets/images/logo icon paig metal.png';
 
 export const Footer = () => {
     const { t, isRTL } = useLanguage();
@@ -21,9 +22,7 @@ export const Footer = () => {
                 <div className="grid md:grid-cols-4 gap-12 mb-12">
                     <div className="md:col-span-2">
                         <div className="flex items-center gap-3 mb-6">
-                            <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-pink-500 rounded-xl flex items-center justify-center shadow-lg">
-                                <span className="text-white text-2xl font-bold">ن</span>
-                            </div>
+                            <img src={logoImg} alt="Na3eeman" className="w-12 h-12 object-contain" />
                             <h3 className="text-2xl font-bold text-gradient">
                                 {isRTL ? 'نعيما' : 'Na3eeman'}
                             </h3>

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../hooks/useLanguage';
 import { useTheme } from '../hooks/useTheme';
+import logoImg from '../assets/images/logo icon paig metal.png';
 
 export const Header = () => {
     const { t, isRTL, toggleLanguage, language } = useLanguage();
@@ -25,9 +26,7 @@ export const Header = () => {
                         animate={{ opacity: 1, x: 0 }}
                         className="flex items-center gap-3"
                     >
-                        <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-pink-500 rounded-xl flex items-center justify-center shadow-lg">
-                            <span className="text-white text-2xl font-bold">ن</span>
-                        </div>
+                        <img src={logoImg} alt="Na3eeman" className="w-12 h-12 object-contain" />
                         <div>
                             <h1 className="text-2xl font-bold text-gradient">
                                 {language === 'ar' ? 'نعيما' : 'Na3eeman'}
