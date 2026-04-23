@@ -6,7 +6,7 @@ export const Footer = () => {
 
     const footerLinks = [
         { label: t.footer.about, href: '#about' },
-        { label: t.footer.shopFeatures, href: '#features' },
+        { label: t.footer.salonFeatures, href: '#features' },
         { label: t.footer.downloadApp, href: '#download' },
         { label: t.footer.contactUs, href: '#contact' },
     ];

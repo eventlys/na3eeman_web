@@ -15,7 +15,7 @@ export const MerchantShowcase = () => {
         <section className="py-20 bg-cream dark:bg-almost-black transition-colors duration-300 overflow-hidden" ref={ref}>
             <div className="container mx-auto px-4">
                 <div className="grid md:grid-cols-2 gap-16 items-center">
-                    {/* Men's Barbershops */}
+                    {/* Men's Barbersalons */}
                     <motion.div
                         initial={{ opacity: 0, x: isRTL ? 100 : -100 }}
                         animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -27,7 +27,7 @@ export const MerchantShowcase = () => {
                         </div>
                         <div className="w-full md:w-1/2">
                             <h3 className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-4">
-                                {isRTL ? 'صالونات الحلاقة الرجالية' : "Men's Barbershops"}
+                                {isRTL ? 'صالونات الحلاقة الرجالية' : "Men's Barbersalons"}
                             </h3>
                             <p className="text-almost-black/70 dark:text-cream/70 text-lg leading-relaxed">
                                 {isRTL

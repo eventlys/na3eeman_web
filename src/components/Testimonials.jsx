@@ -12,21 +12,21 @@ export const Testimonials = () => {
     const testimonials = [
         {
             name: t.testimonials.testimonial1.name,
-            shop: t.testimonials.testimonial1.shop,
+            salon: t.testimonials.testimonial1.salon,
             location: t.testimonials.testimonial1.location,
             quote: t.testimonials.testimonial1.quote,
             avatar: '👨‍💼',
         },
         {
             name: t.testimonials.testimonial2.name,
-            shop: t.testimonials.testimonial2.shop,
+            salon: t.testimonials.testimonial2.salon,
             location: t.testimonials.testimonial2.location,
             quote: t.testimonials.testimonial2.quote,
             avatar: '👨‍🦱',
         },
         {
             name: t.testimonials.testimonial3.name,
-            shop: t.testimonials.testimonial3.shop,
+            salon: t.testimonials.testimonial3.salon,
             location: t.testimonials.testimonial3.location,
             quote: t.testimonials.testimonial3.quote,
             avatar: '👨‍🦳',
@@ -34,7 +34,7 @@ export const Testimonials = () => {
     ];
 
     const stats = [
-        { value: '100+', label: t.stats.shops },
+        { value: '100+', label: t.stats.salons },
         { value: '5,000+', label: t.stats.bookings },
         { value: '98%', label: t.stats.satisfaction },
     ];
@@ -104,7 +104,7 @@ export const Testimonials = () => {
                                 <div>
                                     <div className="font-bold text-gray-900">{testimonial.name}</div>
                                     <div className="text-sm text-gray-600">
-                                        {testimonial.shop} • {testimonial.location}
+                                        {testimonial.salon} • {testimonial.location}
                                     </div>
                                 </div>
                             </div>

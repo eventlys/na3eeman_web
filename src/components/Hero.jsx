@@ -105,7 +105,7 @@ export const Hero = () => {
                             className="mt-12 grid grid-cols-3 gap-6"
                         >
                             {[
-                                { val: '100+', label: isRTL ? 'محلات' : 'Shops' },
+                                { val: '100+', label: isRTL ? 'محلات' : 'Salons' },
                                 { val: '5K+', label: isRTL ? 'حجز شهرياً' : 'Monthly Bookings' },
                                 { val: '98%', label: isRTL ? 'رضا' : 'Satisfaction' }
                             ].map((stat, i) => (

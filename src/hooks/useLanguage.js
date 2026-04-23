@@ -65,7 +65,7 @@ const translations = {
         },
         // Stats
         stats: {
-            shops: 'محل',
+            salons: 'محل',
             bookings: 'حجز شهرياً',
             satisfaction: 'رضا الزبائن',
         },
@@ -75,19 +75,19 @@ const translations = {
             subtitle: 'اسمع من الحلاقين الأردنيين',
             testimonial1: {
                 name: 'أبو محمد',
-                shop: 'صالون الرجال',
+                salon: 'صالون الرجال',
                 location: 'جبل الحسين',
                 quote: 'زبائني زادوا 40% من أول أسبوع. التطبيق سهل والدعم ممتاز.',
             },
             testimonial2: {
                 name: 'خالد العمري',
-                shop: 'صالون النخبة',
+                salon: 'صالون النخبة',
                 location: 'عبدون',
                 quote: 'نظام العمولات وفر عليّ وقت كثير. كل شي واضح ومنظم.',
             },
             testimonial3: {
                 name: 'محمود الشريف',
-                shop: 'حلاقة الأصالة',
+                salon: 'حلاقة الأصالة',
                 location: 'وسط البلد',
                 quote: 'الزبائن بحجزوا من خلال الواتساب وأنا بستقبلهم. راحة بال!',
             },
@@ -103,7 +103,7 @@ const translations = {
         // Footer
         footer: {
             about: 'عن التطبيق',
-            shopFeatures: 'مزايا المحلات',
+            salonFeatures: 'مزايا المحلات',
             downloadApp: 'تحميل',
             contactUs: 'اتصل بنا',
             copyright: 'نعيما © 2026 — منصة أردنية 100%',
@@ -160,7 +160,7 @@ const translations = {
             title: 'How It Works',
             subtitle: 'Three simple steps to book',
             step1: {
-                title: 'Choose Shop',
+                title: 'Choose Salon',
                 description: 'Find your favorite salon in your area',
             },
             step2: {
@@ -174,29 +174,29 @@ const translations = {
         },
         // Stats
         stats: {
-            shops: 'Shops',
+            salons: 'Salons',
             bookings: 'Monthly Bookings',
             satisfaction: 'Satisfaction',
         },
         // Testimonials
         testimonials: {
-            title: 'Shop Owner Reviews',
+            title: 'Salon Owner Reviews',
             subtitle: 'Hear from Jordanian barbers',
             testimonial1: {
                 name: 'Abu Mohammad',
-                shop: "Men's Salon",
+                salon: "Men's Salon",
                 location: 'Jabal Al-Hussein',
                 quote: 'My customers increased 40% from the first week. Easy app, excellent support.',
             },
             testimonial2: {
                 name: 'Khaled Al-Omari',
-                shop: 'Elite Salon',
+                salon: 'Elite Salon',
                 location: 'Abdoun',
                 quote: 'The commission system saved me a lot of time. Everything is clear and organized.',
             },
             testimonial3: {
                 name: 'Mahmoud Al-Shareef',
-                shop: 'Authenticity Barber',
+                salon: 'Authenticity Barber',
                 location: 'Downtown',
                 quote: 'Customers book through WhatsApp and I receive them. Peace of mind!',
             },
@@ -212,7 +212,7 @@ const translations = {
         // Footer
         footer: {
             about: 'About',
-            shopFeatures: 'Shop Features',
+            salonFeatures: 'Salon Features',
             downloadApp: 'Download',
             contactUs: 'Contact Us',
             copyright: 'Na3eeman © 2026 — 100% Jordanian Platform',
