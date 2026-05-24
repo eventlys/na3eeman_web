@@ -1,0 +1,14 @@
+# coderabbit.yaml
+language: "en-US"
+reviews:
+  profile: "security_and_performance"
+  request_changes_workflow: false
+  high_level_summary: true
+  poem: false
+  review_status: true
+  collapse_walkthrough: false
+  path_instructions:
+    - path: "**/*.jsx"
+      instructions: "Check for React performance, unnecessary re-renders, state management, and ensure Tailwind usage is consistent."
+chat:
+  auto_reply: true

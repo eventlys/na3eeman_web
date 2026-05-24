@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../hooks/useLanguage';
 import { useTheme } from '../hooks/useTheme';
-import logoImg from '../assets/images/logo icon paig metal.png';
+import { ThemeImage } from './ThemeImage';
 
 export const Header = () => {
     const { t, isRTL, toggleLanguage, language } = useLanguage();
@@ -26,11 +26,9 @@ export const Header = () => {
                         animate={{ opacity: 1, x: 0 }}
                         className="flex items-center gap-3"
                     >
-                        <img src={logoImg} alt="Na3eeman" className="w-12 h-12 object-contain" />
+                        <ThemeImage type="logo" className="w-12 h-12 object-contain" />
                         <div>
-                            <h1 className="text-2xl font-bold text-gradient">
-                                {language === 'ar' ? 'نعيما' : 'Na3eeman'}
-                            </h1>
+                            <ThemeImage type="appName" className="h-6 object-contain" />
                         </div>
                     </motion.div>
 

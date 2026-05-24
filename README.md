@@ -1,6 +1,6 @@
 # Na3eeman Landing Page
 
-A bilingual (Arabic/English) landing page for Na3eeman - a Jordanian barber booking platform.
+A bilingual (Arabic/English) landing page for Na3eeman - a Jordanian expert booking platform.
 
 ## 🚀 Features
 

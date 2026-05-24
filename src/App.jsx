@@ -2,6 +2,7 @@ import './index.css';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { Features } from './components/Features';
+import { AIInsights } from './components/AIInsights';
 import { Pricing } from './components/Pricing';
 import { MerchantShowcase } from './components/MerchantShowcase';
 import { HowItWorks } from './components/HowItWorks';
@@ -16,6 +17,7 @@ function App() {
             <main>
                 <Hero />
                 <Features />
+                <AIInsights />
                 <Pricing />
                 <MerchantShowcase />
                 <HowItWorks />

@@ -121,7 +121,7 @@ const translations = {
         // Hero Section
         hero: {
             title: 'Na3eeman',
-            subtitle: 'Barber booking made simple',
+            subtitle: 'Expert booking made simple',
             description: 'Jordanian app for haircuts without waiting. Book, cut, pay cash.',
             ctaDownload: 'Download App',
             ctaBook: 'Book Now',
@@ -144,7 +144,7 @@ const translations = {
             },
             commission: {
                 title: 'Staff Commission Tracking',
-                description: 'Automatic commission system for each barber by bookings.',
+                description: 'Automatic commission system for each expert by bookings.',
             },
             ramadan: {
                 title: 'Ramadan Hours',
@@ -181,7 +181,7 @@ const translations = {
         // Testimonials
         testimonials: {
             title: 'Salon Owner Reviews',
-            subtitle: 'Hear from Jordanian barbers',
+            subtitle: 'Hear from Jordanian experts',
             testimonial1: {
                 name: 'Abu Mohammad',
                 salon: "Men's Salon",
@@ -196,7 +196,7 @@ const translations = {
             },
             testimonial3: {
                 name: 'Mahmoud Al-Shareef',
-                salon: 'Authenticity Barber',
+                salon: 'Authenticity Expert',
                 location: 'Downtown',
                 quote: 'Customers book through WhatsApp and I receive them. Peace of mind!',
             },

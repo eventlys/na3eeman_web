@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { useLanguage } from '../hooks/useLanguage';
-import naeemaImg from '../assets/images/mobile girl.png';
-import naeemImg from '../assets/images/mobile man.png';
+import { SafeAnimatedCharacter } from './SafeAnimatedCharacter';
 
 export const Hero = () => {
     const { t, isRTL } = useLanguage();
@@ -119,34 +118,9 @@ export const Hero = () => {
 
                     {/* Character Visuals */}
                     <div className="relative h-[500px] md:h-[700px] flex items-center justify-center">
-                        {/* Naeema (Pink) */}
-                        <motion.div
-                            initial={{ opacity: 0, x: 100, rotate: 10 }}
-                            animate={{ opacity: 1, x: isRTL ? -120 : 120, rotate: 5 }}
-                            transition={{ duration: 1, delay: 0.5 }}
-                            className="absolute z-20 w-3/4 md:w-full max-w-[400px]"
-                        >
-                            <img
-                                src={naeemaImg}
-                                alt="Naeema"
-                                className="w-full drop-shadow-2xl animate-float-slow"
-                            />
-                        </motion.div>
-
-                        {/* Naeem (Blue) */}
-                        <motion.div
-                            initial={{ opacity: 0, x: -100, rotate: -10 }}
-                            animate={{ opacity: 1, x: isRTL ? 80 : -80, rotate: -5 }}
-                            transition={{ duration: 1, delay: 0.7 }}
-                            className="absolute z-10 w-2/3 md:w-full max-w-[350px] opacity-70 group-hover:opacity-100 transition-opacity"
-                        >
-                            <img
-                                src={naeemImg}
-                                alt="Naeem"
-                                className="w-full drop-shadow-2xl"
-                                style={{ animation: 'float-slow 8s ease-in-out infinite reverse' }}
-                            />
-                        </motion.div>
+                        {/* Characters */}
+                        <SafeAnimatedCharacter type="mobFemale" position="left" delay={0.5} />
+                        <SafeAnimatedCharacter type="mobMale" position="right" delay={0.7} />
 
                         {/* Background Glow */}
                         <div className="absolute inset-0 bg-gradient-radial from-blue-500/20 via-pink-500/10 to-transparent blur-3xl opacity-50 dark:opacity-30 -z-10"></div>

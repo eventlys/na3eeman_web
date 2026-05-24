@@ -3,7 +3,7 @@
     "private": true,
     "version": "1.0.0",
     "type": "module",
-    "description": "Na3eeman - Jordanian Barber Booking Platform Landing Page",
+    "description": "Na3eeman - Jordanian Expert Booking Platform Landing Page",
     "scripts": {
         "dev": "vite",
         "build": "vite build",
