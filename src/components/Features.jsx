@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useLanguage } from '../hooks/useLanguage';
+import { SafeAnimatedCharacter } from './SafeAnimatedCharacter';
+
 
 /**
  * Full feature grid covering all Na3eeman capabilities —
@@ -8,7 +10,7 @@ import { useLanguage } from '../hooks/useLanguage';
  */
 export const Features = () => {
     const { t, isRTL } = useLanguage();
-    const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.08 });
+    const [ref, inView] = useInView({ threshold: 0.08 });
 
     const categories = [
         {
@@ -206,12 +208,26 @@ export const Features = () => {
     ];
 
     return (
-        <section id="features" className="py-24 bg-gray-50 dark:bg-gray-900" ref={ref}>
-            <div className="container mx-auto px-4 max-w-7xl">
+        <section id="features" className="py-24 bg-gray-50 dark:bg-gray-900 relative overflow-hidden" ref={ref}>
+            {/* Walking Character Background */}
+            <motion.div
+                className={`absolute top-32 lg:top-40 hidden lg:block pointer-events-none z-0 ${isRTL ? 'right-[-5%] lg:right-[2%]' : 'left-[-5%] lg:left-[2%]'}`}
+                initial={{ x: isRTL ? 150 : -150, opacity: 0 }}
+                animate={inView ? { x: 0, opacity: 1 } : { x: isRTL ? 150 : -150, opacity: 0 }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
+            >
+                <SafeAnimatedCharacter
+                    type={isRTL ? "mobMaleFlip" : "mobMale"}
+                    inline={true}
+                    delay={0.2}
+                />
+            </motion.div>
+
+            <div className="container mx-auto px-4 max-w-7xl relative z-10">
                 {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
-                    animate={inView ? { opacity: 1, y: 0 } : {}}
+                    animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                     transition={{ duration: 0.6 }}
                     className="text-center mb-20"
                 >
@@ -231,7 +247,7 @@ export const Features = () => {
                         {/* Category Label */}
                         <motion.div
                             initial={{ opacity: 0, x: isRTL ? 30 : -30 }}
-                            animate={inView ? { opacity: 1, x: 0 } : {}}
+                            animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: isRTL ? 30 : -30 }}
                             transition={{ duration: 0.5, delay: ci * 0.1 }}
                             className="flex items-center gap-3 mb-8"
                         >
@@ -244,8 +260,8 @@ export const Features = () => {
                             {cat.features.map((feat, fi) => (
                                 <motion.div
                                     key={fi}
-                                    initial={{ opacity: 0, y: 24 }}
-                                    animate={inView ? { opacity: 1, y: 0 } : {}}
+                                    initial={{ opacity: 0, x: isRTL ? -100 : 100 }}
+                                    animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: isRTL ? -100 : 100 }}
                                     transition={{ duration: 0.5, delay: ci * 0.08 + fi * 0.07 }}
                                     className="group bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:border-transparent hover:-translate-y-1"
                                 >

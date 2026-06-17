@@ -118,9 +118,14 @@ export const Hero = () => {
 
                     {/* Character Visuals */}
                     <div className="relative h-[500px] md:h-[700px] flex items-center justify-center">
-                        {/* Characters */}
-                        <SafeAnimatedCharacter type="mobFemale" position="left" delay={0.5} />
-                        <SafeAnimatedCharacter type="mobMale" position="right" delay={0.7} />
+                        {/* Character */}
+                        <motion.div
+                            initial={{ x: isRTL ? -150 : 150, opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            transition={{ duration: 1.2, ease: "easeOut" }}
+                        >
+                            <SafeAnimatedCharacter type="mobFemale" inline={true} delay={0.5} />
+                        </motion.div>
 
                         {/* Background Glow */}
                         <div className="absolute inset-0 bg-gradient-radial from-blue-500/20 via-pink-500/10 to-transparent blur-3xl opacity-50 dark:opacity-30 -z-10"></div>

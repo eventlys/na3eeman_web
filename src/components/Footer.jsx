@@ -8,6 +8,7 @@ export const Footer = () => {
         { label: t.footer.salonFeatures, href: '#features' },
         { label: t.footer.downloadApp, href: '#download' },
         { label: t.footer.contactUs, href: '#contact' },
+        { label: isRTL ? 'الشروط والأحكام' : 'Legal', href: '/legal' },
     ];
 
     const socialLinks = [
