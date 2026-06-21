@@ -4,7 +4,7 @@ import { useLanguage } from '../hooks/useLanguage';
 import { SafeAnimatedCharacter } from './SafeAnimatedCharacter';
 
 export const MerchantShowcase = () => {
-    const { t, isRTL } = useLanguage();
+    const { isRTL } = useLanguage();
     const [ref, inView] = useInView({
         triggerOnce: true,
         threshold: 0.1,

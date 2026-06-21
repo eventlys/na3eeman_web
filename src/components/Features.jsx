@@ -9,7 +9,7 @@ import { SafeAnimatedCharacter } from './SafeAnimatedCharacter';
  * expanded to match Fresha, Bodrah, and WAJ feature sets.
  */
 export const Features = () => {
-    const { t, isRTL } = useLanguage();
+    const { isRTL } = useLanguage();
     const [ref, inView] = useInView({ threshold: 0.08 });
 
     const categories = [

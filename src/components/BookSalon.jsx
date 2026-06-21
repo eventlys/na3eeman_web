@@ -9,6 +9,8 @@ import { useLanguage } from '../hooks/useLanguage';
  * For the current SPA (no router), this is rendered as a demo
  * when #book is in the URL hash. Add React Router for full routing.
  */
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api/v1';
+
 export const BookSalon = ({ salonSlug }) => {
     const { isRTL } = useLanguage();
     const [salon, setSalon] = useState(null);
@@ -21,8 +23,6 @@ export const BookSalon = ({ salonSlug }) => {
     const [step, setStep] = useState(1); // 1: service, 2: datetime, 3: confirm, 4: success
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
-
-    const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api/v1';
 
     // Available time slots (generated UI-side for demo)
     const timeSlots = [
