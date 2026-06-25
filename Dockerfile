@@ -18,6 +18,9 @@ RUN npm run build
 # ==================== RUNTIME STAGE ====================
 FROM nginx:1.27-alpine
 
+# Upgrade all Alpine packages to fix vulnerabilities (curl, libxml2, musl, etc.)
+RUN apk update && apk upgrade --no-cache
+
 # Copy custom Nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
