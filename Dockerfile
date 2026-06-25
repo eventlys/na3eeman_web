@@ -1,5 +1,5 @@
 # ==================== BUILDER STAGE ====================
-FROM node:18-alpine AS builder
+FROM node:20-alpine AS builder
 
 WORKDIR /build
 
@@ -16,7 +16,7 @@ COPY . .
 RUN npm run build
 
 # ==================== RUNTIME STAGE ====================
-FROM nginx:1.25-alpine
+FROM nginx:1.27-alpine
 
 # Copy custom Nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf
