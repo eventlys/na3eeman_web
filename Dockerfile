@@ -29,13 +29,13 @@ COPY --from=builder /build/dist /usr/share/nginx/html
 
 # Add healthcheck
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-    CMD wget --quiet --tries=1 --spider http://localhost:80/health || exit 1
+    CMD wget --quiet --tries=1 --spider http://localhost:8080/health || exit 1
 
 # Create health endpoint
 RUN echo '<!DOCTYPE html><html><body>OK</body></html>' > /usr/share/nginx/html/health
 
 # Expose port
-EXPOSE 80
+EXPOSE 8080
 
 # Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
