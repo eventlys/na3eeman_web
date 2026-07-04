@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, createContext, useContext } from 'react';
 
 const translations = {
     ar: {
@@ -13,7 +13,7 @@ const translations = {
         hero: {
             title: 'نعيما',
             subtitle: 'حجز الحلاقة صار أسهل',
-            description: 'تطبيق أردني للحلاقة بدون انتظار. احجز، اقطع، ادفع كاش.',
+            description: 'تطبيق أردني للحلاقة بدون انتظار. اختر، احجز، ادفع.',
             ctaDownload: 'حمل التطبيق',
             ctaBook: 'احجز الآن',
         },
@@ -71,7 +71,7 @@ const translations = {
         },
         // Testimonials
         testimonials: {
-            title: 'آراء أصحاب المحلات',
+            title: 'آراء',
             subtitle: 'اسمع من الحلاقين الأردنيين',
             testimonial1: {
                 name: 'أبو محمد',
@@ -107,7 +107,6 @@ const translations = {
             downloadApp: 'تحميل',
             contactUs: 'اتصل بنا',
             copyright: 'نعيما © 2026 — منصة أردنية 100%',
-            tagline: 'صنع بحب في عمّان 🇯🇴',
         },
     },
     en: {
@@ -122,7 +121,7 @@ const translations = {
         hero: {
             title: 'Na3eeman',
             subtitle: 'Expert booking made simple',
-            description: 'Jordanian app for haircuts without waiting. Book, cut, pay cash.',
+            description: 'Jordanian app for haircuts without waiting. Book, Attend, Pay.',
             ctaDownload: 'Download App',
             ctaBook: 'Book Now',
         },
@@ -180,7 +179,7 @@ const translations = {
         },
         // Testimonials
         testimonials: {
-            title: 'Salon Owner Reviews',
+            title: 'Reviews',
             subtitle: 'Hear from Jordanian experts',
             testimonial1: {
                 name: 'Abu Mohammad',
@@ -216,12 +215,13 @@ const translations = {
             downloadApp: 'Download',
             contactUs: 'Contact Us',
             copyright: 'Na3eeman © 2026 — 100% Jordanian Platform',
-            tagline: 'Made with love in Amman 🇯🇴',
         },
     },
 };
 
-export const useLanguage = () => {
+const LanguageContext = createContext();
+
+export const LanguageProvider = ({ children }) => {
     const [language, setLanguage] = useState(() => {
         // Check localStorage first
         const savedLang = localStorage.getItem('language');
@@ -248,5 +248,17 @@ export const useLanguage = () => {
     const t = translations[language];
     const isRTL = language === 'ar';
 
-    return { language, toggleLanguage, t, isRTL };
+    return (
+        <LanguageContext.Provider value={{ language, toggleLanguage, t, isRTL }}>
+            {children}
+        </LanguageContext.Provider>
+    );
+};
+
+export const useLanguage = () => {
+    const context = useContext(LanguageContext);
+    if (!context) {
+        throw new Error('useLanguage must be used within a LanguageProvider');
+    }
+    return context;
 };

@@ -14,7 +14,6 @@ const LegalPage = () => {
         setSelectedCategory(category);
         const categoryData = docsData[category];
         if (typeof categoryData === 'object' && !categoryData.main) {
-             // It's a directory without a main file directly inside (like Legal/Privacy_Policy)
              const firstKey = Object.keys(categoryData)[0];
              setSelectedPage(firstKey);
         } else {
@@ -28,27 +27,26 @@ const LegalPage = () => {
 
     const renderMenu = () => {
         return (
-            <div className="w-1/4 bg-gray-50 p-4 border-r overflow-y-auto">
-                <h3 className="text-xl font-bold mb-4">Legal & Information</h3>
-                <ul>
+            <div className="w-full md:w-1/4 bg-gray-50/50 dark:bg-white/5 p-6 border-b md:border-b-0 md:border-r border-gray-200 dark:border-white/10 overflow-y-auto backdrop-blur-md">
+                <h3 className="text-xl font-bold mb-6 text-gray-900 dark:text-white">Legal & Information</h3>
+                <ul className="space-y-2">
                     {Object.keys(docsData).map((category) => (
                         <li key={category} className="mb-2">
                             <button
-                                className={`text-left w-full p-2 rounded ${selectedCategory === category ? 'bg-blue-100 text-blue-700 font-semibold' : 'text-gray-700 hover:bg-gray-200'}`}
+                                className={`text-left w-full p-3 rounded-xl transition-all duration-200 font-medium ${selectedCategory === category ? 'bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300 shadow-sm' : 'text-gray-700 dark:text-gray-300 hover:bg-gray-200/50 dark:hover:bg-white/10'}`}
                                 onClick={() => handleCategoryClick(category)}
                             >
                                 {category.replace(/_/g, ' ')}
                             </button>
                             {selectedCategory === category && typeof docsData[category] === 'object' && (
-                                <ul className="pl-4 mt-2 border-l border-gray-300">
+                                <ul className="pl-4 mt-2 border-l-2 border-violet-200 dark:border-violet-900/30 ml-3 space-y-1">
                                     {Object.keys(docsData[category]).map((pageKey) => {
-                                         // Don't show 'main' in sublist if it's the only thing or if it represents the category itself
                                          if (pageKey === 'main') return null;
                                          
                                          return (
                                             <li key={pageKey} className="mb-1">
                                                 <button
-                                                    className={`text-left w-full p-1 text-sm rounded ${selectedPage === pageKey ? 'text-blue-600 font-semibold' : 'text-gray-600 hover:text-blue-500'}`}
+                                                    className={`text-left w-full p-2 text-sm rounded-lg transition-colors ${selectedPage === pageKey ? 'text-violet-600 dark:text-violet-400 font-bold bg-violet-50 dark:bg-violet-900/20' : 'text-gray-600 dark:text-gray-400 hover:text-violet-500 dark:hover:text-violet-300 hover:bg-gray-100 dark:hover:bg-white/5'}`}
                                                     onClick={() => handlePageClick(pageKey)}
                                                 >
                                                     {pageKey.replace(/__/g, ' ').replace(/_/g, ' ')}
@@ -80,21 +78,18 @@ const LegalPage = () => {
                  } else if (catData[selectedPage]['main']) {
                      content = catData[selectedPage]['main'];
                  } else {
-                     // For nested objects like Legal -> Privacy_Policy -> introduction
-                     // This simple viewer might just flatten it or show the first subpage
                      const firstSubKey = Object.keys(catData[selectedPage])[0];
                      content = catData[selectedPage][firstSubKey];
                  }
             } else {
-                 // Try to render the first string we find
                  const firstStringKey = Object.keys(catData).find(k => typeof catData[k] === 'string');
                  if (firstStringKey) content = catData[firstStringKey];
             }
         }
 
         return (
-            <div className="w-3/4 p-8 overflow-y-auto">
-                <div className="prose max-w-none prose-blue">
+            <div className="w-full md:w-3/4 p-8 md:p-12 overflow-y-auto">
+                <div className="prose prose-lg max-w-4xl prose-violet dark:prose-invert">
                     <ReactMarkdown>{content}</ReactMarkdown>
                 </div>
             </div>
@@ -102,9 +97,13 @@ const LegalPage = () => {
     };
 
     return (
-        <div className="container mx-auto flex h-[80vh] mt-8 mb-8 border rounded shadow-sm bg-white">
-            {renderMenu()}
-            {renderContent()}
+        <div className="min-h-screen pt-24 pb-12 bg-gray-50 dark:bg-[#0a0a0a] transition-colors duration-300">
+            <div className="container mx-auto px-4 h-[calc(100vh-8rem)]">
+                <div className="flex flex-col md:flex-row h-full rounded-3xl shadow-xl bg-white/70 dark:bg-[#111111]/70 backdrop-blur-2xl border border-gray-200/50 dark:border-white/10 overflow-hidden">
+                    {renderMenu()}
+                    {renderContent()}
+                </div>
+            </div>
         </div>
     );
 };

@@ -4,10 +4,7 @@ export const Footer = () => {
     const { t, isRTL } = useLanguage();
 
     const footerLinks = [
-        { label: t.footer.about, href: '#about' },
-        { label: t.footer.salonFeatures, href: '#features' },
-        { label: t.footer.downloadApp, href: '#download' },
-        { label: t.footer.contactUs, href: '#contact' },
+        { label: isRTL ? 'للأعمال' : 'For Business', href: '/for-business' },
         { label: isRTL ? 'الشروط والأحكام' : 'Legal', href: '/legal' },
     ];
 
@@ -17,25 +14,25 @@ export const Footer = () => {
     ];
 
     return (
-        <footer id="contact" className="bg-almost-black text-cream py-16 transition-colors duration-300">
-            <div className="container mx-auto px-4">
+        <footer id="contact" className="bg-gray-50 dark:bg-[#050505] text-gray-800 dark:text-white py-16 transition-colors duration-300 relative border-t border-gray-200 dark:border-white/5">
+            <div className="absolute inset-0 bg-gradient-to-t from-violet-100/50 dark:from-violet-900/10 to-transparent pointer-events-none" />
+            <div className="container mx-auto px-4 relative z-10">
                 <div className="grid md:grid-cols-4 gap-12 mb-12">
                     <div className="md:col-span-2">
-                        <div className="flex items-center gap-3 mb-6">
-                            <ThemeImage type="logo" className="w-12 h-12 object-contain" />
-                            <ThemeImage type="appName" className="h-6 object-contain" />
+                        <div className="flex items-center mb-6">
+                            <ThemeImage type="appName" className="h-14 md:h-20 object-contain dark:brightness-100 brightness-0" />
                         </div>
-                        <p className="text-cream/60 mb-8 max-w-md leading-relaxed">
+                        <p className="text-gray-600 dark:text-white/60 mb-8 max-w-md leading-relaxed font-medium">
                             {isRTL
-                                ? 'تطبيق أردني للحلاقة بدون انتظار. احجز موعدك، اقطع شعرك، وادفع كاش.'
-                                : 'Jordanian app for haircuts without waiting. Book your appointment, get your haircut, and pay cash.'}
+                                ? 'تطبيق أردني للحلاقة بدون انتظار. احجز موعدك، اقطع شعرك، وادفع.'
+                                : 'Jordanian app for haircuts without waiting. Book your appointment, get your haircut, and pay.'}
                         </p>
                         <div className="flex gap-4">
                             {socialLinks.map((social, index) => (
                                 <a
                                     key={index}
                                     href={social.href}
-                                    className="w-12 h-12 bg-cream/10 hover:bg-pink-500 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-110"
+                                    className="w-12 h-12 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-violet-500/50 hover:bg-violet-100 dark:hover:bg-violet-600/20 text-gray-500 dark:text-white/60 hover:text-violet-600 dark:hover:text-violet-400 rounded-2xl flex items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-violet-500/20"
                                     aria-label={social.name}
                                 >
                                     {social.icon}
@@ -45,13 +42,13 @@ export const Footer = () => {
                     </div>
 
                     <div>
-                        <h4 className="text-lg font-bold mb-6 text-pink-400">
+                        <h4 className="text-lg font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-pink-400">
                             {isRTL ? 'روابط سريعة' : 'Quick Links'}
                         </h4>
                         <ul className="space-y-4">
                             {footerLinks.map((link, index) => (
                                 <li key={index}>
-                                    <a href={link.href} className="text-cream/60 hover:text-blue-400 transition-colors duration-200">
+                                    <a href={link.href} className="text-gray-600 dark:text-white/60 hover:text-violet-600 dark:hover:text-white transition-colors duration-200 font-medium">
                                         {link.label}
                                     </a>
                                 </li>
@@ -60,29 +57,31 @@ export const Footer = () => {
                     </div>
 
                     <div>
-                        <h4 className="text-lg font-bold mb-6 text-blue-400">
-                            {isRTL ? 'تواصل معنا' : 'Contact Us'}
+                        <h4 className="text-lg font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
+                            {isRTL ? 'المساعدة والدعم' : 'Support & Help'}
                         </h4>
-                        <ul className="space-y-4 text-cream/60">
-                            <li className="flex items-center gap-3">
-                                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" /><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" /></svg>
-                                <span dir="ltr">info@na3eeman.jo</span>
+                        <ul className="space-y-4 text-gray-600 dark:text-white/60 font-medium">
+                            <li>
+                                <a href="#" className="hover:text-violet-600 dark:hover:text-white transition-colors duration-200">
+                                    {isRTL ? 'مركز المساعدة' : 'Help Center'}
+                                </a>
                             </li>
-                            <li className="flex items-center gap-3">
-                                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
-                                <span dir="ltr">+962 6 XXX XXXX</span>
+                            <li>
+                                <a href="#" className="hover:text-violet-600 dark:hover:text-white transition-colors duration-200">
+                                    {isRTL ? 'الأسئلة الشائعة' : 'FAQs'}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" className="hover:text-violet-600 dark:hover:text-white transition-colors duration-200">
+                                    {isRTL ? 'الدعم الفني' : 'Contact Support'}
+                                </a>
                             </li>
                         </ul>
                     </div>
                 </div>
 
-                <div className="border-t border-cream/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-cream/40">
+                <div className="border-t border-gray-200 dark:border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500 dark:text-white/40 font-medium">
                     <div>{t.footer.copyright}</div>
-                    <div className="flex items-center gap-2">
-                        <span>Made with</span>
-                        <span className="text-pink-500">❤️</span>
-                        <span>in Jordan</span>
-                    </div>
                 </div>
             </div>
         </footer>

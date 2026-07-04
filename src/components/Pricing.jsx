@@ -22,7 +22,6 @@ export const Pricing = () => {
             features: [
                 isRTL ? '١ موظف قابل للحجز' : '1 bookable staff member',
                 isRTL ? 'تقويم أساسي' : 'Basic calendar',
-                isRTL ? 'قبول مدفوعات كاش' : 'Cash payment acceptance',
                 isRTL ? 'ملفات عملاء' : 'Customer profiles',
                 isRTL ? '٢٠ رسالة مجانية/شهر' : '20 free messages/month',
                 isRTL ? 'دعم عبر البريد' : 'Email support',
@@ -40,7 +39,6 @@ export const Pricing = () => {
             features: [
                 isRTL ? 'حتى ٦ موظفين' : 'Up to 6 staff members',
                 isRTL ? 'تقويم متعدد الأعمدة' : 'Multi-column calendar',
-                isRTL ? 'جميع طرق الدفع' : 'All payment methods',
                 isRTL ? 'برنامج Loyalty' : 'Loyalty programme',
                 isRTL ? 'حملات تسويقية' : 'Marketing campaigns',
                 isRTL ? 'تصدير واستيراد البيانات' : 'Data export & import',
@@ -89,7 +87,7 @@ export const Pricing = () => {
     ];
 
     return (
-        <section id="pricing" className="py-24 bg-white dark:bg-gray-950" ref={ref}>
+        <section id="pricing" className="py-24 bg-cream dark:bg-[#0a0a0a] transition-colors duration-300" ref={ref}>
             <div className="container mx-auto px-4 max-w-7xl">
                 {/* Header */}
                 <motion.div
@@ -118,38 +116,41 @@ export const Pricing = () => {
                             transition={{ duration: 0.5, delay: idx * 0.1 }}
                             className={`relative rounded-3xl border ${
                                 tier.badge
-                                    ? 'border-violet-400 shadow-2xl shadow-violet-200 dark:shadow-violet-900/20 scale-105'
-                                    : 'border-gray-200 dark:border-gray-700 shadow-md'
-                            } bg-white dark:bg-gray-900 overflow-hidden`}
+                                    ? 'border-violet-400/50 shadow-2xl shadow-violet-500/20 dark:shadow-violet-900/30 scale-105 z-10'
+                                    : 'border-white/20 dark:border-white/5 shadow-lg'
+                            } bg-white/60 dark:bg-black/40 backdrop-blur-xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2`}
                         >
+                            {/* Glass reflection */}
+                            <div className="absolute inset-0 bg-gradient-to-b from-white/40 dark:from-white/5 to-transparent pointer-events-none" />
+
                             {/* Popular badge */}
                             {tier.badge && (
-                                <div className={`absolute top-0 left-0 right-0 py-1.5 text-center text-xs font-bold text-white bg-gradient-to-r ${tier.color}`}>
+                                <div className={`absolute top-0 left-0 right-0 py-1.5 text-center text-xs font-bold text-white bg-gradient-to-r ${tier.color} shadow-md`}>
                                     {tier.badge}
                                 </div>
                             )}
 
-                            <div className={`p-6 ${tier.badge ? 'pt-10' : ''}`}>
+                            <div className={`p-6 relative z-10 ${tier.badge ? 'pt-10' : ''}`}>
                                 {/* Tier Header */}
-                                <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-white text-xs font-bold bg-gradient-to-r ${tier.color} mb-4`}>
+                                <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-white text-xs font-bold bg-gradient-to-r ${tier.color} mb-4 shadow-inner`}>
                                     {tier.name}
                                 </div>
-                                <p className="text-gray-500 dark:text-gray-400 text-sm mb-4">{tier.subtitle}</p>
+                                <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 font-medium">{tier.subtitle}</p>
 
                                 {/* Price */}
-                                <div className="mb-6">
-                                    <span className={`text-4xl font-black bg-gradient-to-r ${tier.color} bg-clip-text text-transparent`}>
+                                <div className="mb-6 flex items-baseline gap-1">
+                                    <span className={`text-4xl font-black bg-gradient-to-br ${tier.color} bg-clip-text text-transparent drop-shadow-sm`}>
                                         {tier.price}
                                     </span>
                                     {tier.period && (
-                                        <span className="text-gray-400 text-sm ms-1">{tier.period}</span>
+                                        <span className="text-gray-500 dark:text-gray-400 text-sm font-medium">{tier.period}</span>
                                     )}
                                 </div>
 
                                 {/* CTA */}
                                 <a
                                     href="#download"
-                                    className={`block w-full py-3 rounded-xl text-center text-sm font-bold text-white bg-gradient-to-r ${tier.color} hover:opacity-90 transition-opacity mb-6 shadow-md`}
+                                    className={`block w-full py-3 rounded-xl text-center text-sm font-bold text-white bg-gradient-to-r ${tier.color} hover:opacity-90 transition-opacity mb-6 shadow-md hover:shadow-lg`}
                                 >
                                     {tier.cta}
                                 </a>
@@ -157,10 +158,12 @@ export const Pricing = () => {
                                 {/* Features List */}
                                 <ul className="space-y-3">
                                     {tier.features.map((f, fi) => (
-                                        <li key={fi} className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300">
-                                            <svg className="w-4 h-4 mt-0.5 shrink-0 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                                            </svg>
+                                        <li key={fi} className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300 font-medium">
+                                            <div className="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center shrink-0 mt-0.5">
+                                                <svg className="w-3.5 h-3.5 text-green-600 dark:text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                                                </svg>
+                                            </div>
                                             {f}
                                         </li>
                                     ))}
@@ -175,7 +178,7 @@ export const Pricing = () => {
                     initial={{ opacity: 0 }}
                     animate={inView ? { opacity: 1 } : {}}
                     transition={{ delay: 0.6 }}
-                    className="text-center text-sm text-gray-400 mt-10"
+                    className="text-center text-sm text-gray-500 dark:text-gray-400 mt-10 font-medium"
                 >
                     {isRTL
                         ? '✦ جميع الأسعار حصرية لضريبة المبيعات المحلية. لا عمولة على الحجوزات.'

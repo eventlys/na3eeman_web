@@ -3,24 +3,22 @@ import { Routes, Route } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { Features } from './components/Features';
-import { AIInsights } from './components/AIInsights';
-import { Pricing } from './components/Pricing';
+import { ForBusiness } from './components/ForBusiness';
 import { MerchantShowcase } from './components/MerchantShowcase';
-import { HowItWorks } from './components/HowItWorks';
+
 import { Testimonials } from './components/Testimonials';
 import { DownloadSection } from './components/DownloadSection';
 import { Footer } from './components/Footer';
 import LegalPage from './components/LegalPage';
+import { BookSalon } from './components/BookSalon';
 
 function LandingPage() {
     return (
         <main>
             <Hero />
             <Features />
-            <AIInsights />
-            <Pricing />
             <MerchantShowcase />
-            <HowItWorks />
+
             <Testimonials />
             <DownloadSection />
         </main>
@@ -34,6 +32,9 @@ function App() {
             <Routes>
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/legal/*" element={<LegalPage />} />
+                <Route path="/features" element={<Features />} />
+                <Route path="/booking" element={<BookSalon />} />
+                <Route path="/for-business" element={<ForBusiness />} />
             </Routes>
             <Footer />
         </div>
