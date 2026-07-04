@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useLanguage } from '../hooks/useLanguage';
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 
 // Odometer Component (Unused)
 // const Odometer = ({ target, duration = 2 }) => {
