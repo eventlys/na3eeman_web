@@ -1,30 +1,30 @@
-import { motion, useAnimation, animate } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useLanguage } from '../hooks/useLanguage';
 import { useState, useEffect, useRef } from 'react';
 
-// Odometer Component
-const Odometer = ({ target, duration = 2 }) => {
-    const nodeRef = useRef();
-    const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.5 });
-    
-    useEffect(() => {
-        if (inView && nodeRef.current) {
-            const controls = animate(0, target, {
-                duration: duration,
-                ease: [0.2, 0.8, 0.2, 1],
-                onUpdate: (value) => {
-                    if (nodeRef.current) {
-                        nodeRef.current.textContent = Math.round(value).toLocaleString();
-                    }
-                }
-            });
-            return () => controls.stop();
-        }
-    }, [inView, target, duration]);
-
-    return <span ref={(node) => { nodeRef.current = node; ref(node); }}>0</span>;
-};
+// Odometer Component (Unused)
+// const Odometer = ({ target, duration = 2 }) => {
+//     const nodeRef = useRef();
+//     const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.5 });
+//     
+//     useEffect(() => {
+//         if (inView && nodeRef.current) {
+//             const controls = animate(0, target, {
+//                 duration: duration,
+//                 ease: [0.2, 0.8, 0.2, 1],
+//                 onUpdate: (value) => {
+//                     if (nodeRef.current) {
+//                         nodeRef.current.textContent = Math.round(value).toLocaleString();
+//                     }
+//                 }
+//             });
+//             return () => controls.stop();
+//         }
+//     }, [inView, target, duration]);
+// 
+//     return <span ref={(node) => { nodeRef.current = node; ref(node); }}>0</span>;
+// };
 
 // Animated Stars Component
 const StarStagger = ({ rating, inView }) => {
@@ -150,7 +150,6 @@ export const Testimonials = () => {
                             
                             const isTop = offset === 0;
                             const isSecond = offset === 1;
-                            const isThird = offset === 2;
 
                             return (
                                 <motion.div
@@ -169,13 +168,11 @@ export const Testimonials = () => {
                                     transition={{
                                         type: "spring",
                                         stiffness: 300,
-                                        damping: 25,
                                     }}
                                 >
                                     <div className="text-6xl text-pink-500/20 mb-4 absolute top-6 right-8 font-serif">
-                                        "
+                                        &quot;
                                     </div>
-
                                     <p className="text-gray-700 dark:text-gray-200 text-xl leading-relaxed mb-8 relative z-10 font-medium">
                                         {testimonial.quote}
                                     </p>

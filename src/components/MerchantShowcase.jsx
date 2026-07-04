@@ -1,4 +1,4 @@
-import { motion, useMotionValue, useTransform, useSpring, AnimatePresence } from 'framer-motion';
+import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useLanguage } from '../hooks/useLanguage';
 import { useState } from 'react';
