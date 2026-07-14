@@ -38,15 +38,30 @@ export const DownloadSection = () => {
                             {t.download.subtitle}
                         </p>
 
-                        {/* QR Code */}
-                        <div className="p-4 bg-white rounded-[2rem] shadow-2xl border border-gray-100 dark:border-gray-800 inline-block transition-transform duration-300 hover:scale-105">
-                            <div className="w-40 h-40 bg-gray-50 rounded-2xl flex items-center justify-center overflow-hidden border border-gray-100 relative group">
-                                <img src="/assets/qr-code.png" alt="Scan to download" className="w-full h-full object-cover z-10 relative" onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }} />
-                                {/* Placeholder if image is missing */}
-                                <div className="absolute inset-0 hidden flex-col items-center justify-center p-4 text-center z-0">
-                                    <div className="text-3xl mb-2">📱</div>
-                                    <span className="text-gray-400 font-bold text-xs">qr-code.png<br />in public/assets/</span>
-                                </div>
+                        {/* Download Buttons & Instructions */}
+                        <div className="flex flex-col items-center lg:items-start gap-6">
+                            <a 
+                                href="https://storage.googleapis.com/na3eemn-mobile-apps/android/latest/app.apk"
+                                download
+                                className="inline-flex items-center justify-center gap-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-transform duration-300 hover:scale-105 shadow-xl"
+                            >
+                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                </svg>
+                                {isRTL ? 'تحميل تطبيق الأندرويد (APK)' : 'Download Android App (APK)'}
+                            </a>
+                            
+                            <div className="bg-gray-50 dark:bg-gray-800/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800 max-w-md text-start w-full">
+                                <h3 className="font-bold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+                                    <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                    {isRTL ? 'خطوات التثبيت للأندرويد' : 'Android Installation Steps'}
+                                </h3>
+                                <ol className="list-decimal list-inside text-sm text-gray-600 dark:text-gray-400 space-y-2">
+                                    <li>{isRTL ? 'قم بتنزيل ملف APK من الزر أعلاه' : 'Download the APK file from the button above.'}</li>
+                                    <li>{isRTL ? 'افتح الملف الذي تم تنزيله' : 'Open the downloaded file.'}</li>
+                                    <li>{isRTL ? 'إذا طُلب منك، اسمح بـ "التثبيت من مصادر غير معروفة"' : 'If prompted, allow "Install from unknown sources".'}</li>
+                                    <li>{isRTL ? 'انقر على تثبيت واستمتع بالتطبيق!' : 'Click Install and enjoy the app!'}</li>
+                                </ol>
                             </div>
                         </div>
                     </motion.div>
