@@ -7,14 +7,9 @@ on:
   pull_request:
 
 env:
-  PROJECT_ID: na3eman-502802
-  REGION: europe-west4
-  GAR_LOCATION: europe-west4
-  REPOSITORY: prod-na3eman
-  IMAGE: frontend
-  ARTIFACT_REGISTRY: europe-west4-docker.pkg.dev/na3eman-502802/prod-na3eman/frontend
-  WIF_PROVIDER: projects/650727143271/locations/global/workloadIdentityPools/prod-github-actions-pool/providers/prod-github-provider
-  SA_EMAIL: prod-github-sa@na3eman-502802.iam.gserviceaccount.com
+  ARTIFACT_REGISTRY: ${{ vars.REGION }}-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/${{ vars.SERVICE_NAME }}/${{ vars.ARTIFACT_NAME }}
+  WIF_PROVIDER: ${{ secrets.WIF_PROVIDER }}
+  SA_EMAIL: ${{ secrets.SA_EMAIL }}
 
 jobs:
   test:
