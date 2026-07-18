@@ -86,7 +86,7 @@ jobs:
 
       - name: Docker Auth
         run: |-
-          gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev --quiet
+          gcloud auth configure-docker ${{ vars.REGION }}-docker.pkg.dev --quiet
 
       - name: Setup Docker Buildx
         uses: docker/setup-buildx-action@v3
