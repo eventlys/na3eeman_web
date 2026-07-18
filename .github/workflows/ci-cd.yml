@@ -7,7 +7,7 @@ on:
   pull_request:
 
 env:
-  ARTIFACT_REGISTRY: ${{ vars.REGION }}-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/${{ vars.SERVICE_NAME }}/${{ vars.ARTIFACT_NAME }}
+  ARTIFACT_REGISTRY: ${{ vars.GCP_REGION }}-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/${{ vars.GCP_SERVICE_NAME }}/${{ vars.GCP_ARTIFACT_NAME }}
   WIF_PROVIDER: ${{ secrets.WIF_PROVIDER }}
   SA_EMAIL: ${{ secrets.SA_EMAIL }}
 
@@ -86,7 +86,7 @@ jobs:
 
       - name: Docker Auth
         run: |-
-          gcloud auth configure-docker ${{ vars.REGION }}-docker.pkg.dev --quiet
+          gcloud auth configure-docker ${{ vars.GCP_REGION }}-docker.pkg.dev --quiet
 
       - name: Setup Docker Buildx
         uses: docker/setup-buildx-action@v3
