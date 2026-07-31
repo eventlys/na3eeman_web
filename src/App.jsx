@@ -10,7 +10,9 @@ import { Testimonials } from './components/Testimonials';
 import { DownloadSection } from './components/DownloadSection';
 import { Footer } from './components/Footer';
 import LegalPage from './components/LegalPage';
+import { DynamicLegalPage } from './components/DynamicLegalPage';
 import { BookSalon } from './components/BookSalon';
+import { DeleteAccount } from './components/DeleteAccount';
 
 function LandingPage() {
     return (
@@ -26,6 +28,20 @@ function LandingPage() {
 }
 
 function App() {
+    const isTermsDomain = window.location.hostname === 'terms.n3eemn.com';
+
+    if (isTermsDomain) {
+        return (
+            <div className="min-h-screen transition-colors duration-300">
+                <Header />
+                <Routes>
+                    <Route path="*" element={<DynamicLegalPage />} />
+                </Routes>
+                <Footer />
+            </div>
+        );
+    }
+
     return (
         <div className="min-h-screen transition-colors duration-300">
             <Header />
@@ -35,6 +51,7 @@ function App() {
                 <Route path="/features" element={<Features />} />
                 <Route path="/booking" element={<BookSalon />} />
                 <Route path="/for-business" element={<ForBusiness />} />
+                <Route path="/delete-account" element={<DeleteAccount />} />
             </Routes>
             <Footer />
         </div>
