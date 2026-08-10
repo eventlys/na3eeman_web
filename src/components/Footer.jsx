@@ -5,7 +5,15 @@ export const Footer = () => {
 
     const footerLinks = [
         { label: isRTL ? 'للأعمال' : 'For Business', href: '/for-business' },
-        { label: isRTL ? 'الشروط والأحكام' : 'Legal', href: '/legal' },
+    ];
+
+    const legalLinks = [
+        { label: isRTL ? 'الشروط والأحكام للعملاء' : 'Customer Terms', href: `https://legal.na3eeman.com/${isRTL ? 'ar' : 'en'}/customers/terms` },
+        { label: isRTL ? 'الشروط والأحكام للبائعين' : 'Vendor Terms', href: `https://legal.na3eeman.com/${isRTL ? 'ar' : 'en'}/vendors/terms` },
+        { label: isRTL ? 'سياسة الخصوصية' : 'Privacy Policy', href: `https://legal.na3eeman.com/${isRTL ? 'ar' : 'en'}/privacy` },
+        { label: isRTL ? 'سياسة ملفات تعريف الارتباط' : 'Cookie Policy', href: `https://legal.na3eeman.com/${isRTL ? 'ar' : 'en'}/cookies` },
+        { label: isRTL ? 'سياسة الاسترداد والإلغاء' : 'Refund & Cancellation', href: `https://legal.na3eeman.com/${isRTL ? 'ar' : 'en'}/refunds` },
+        { label: isRTL ? 'سياسة الاستخدام المقبول' : 'Acceptable Use', href: `https://legal.na3eeman.com/${isRTL ? 'ar' : 'en'}/acceptable-use` },
     ];
 
     const socialLinks = [
@@ -17,7 +25,7 @@ export const Footer = () => {
         <footer id="contact" className="bg-gray-50 dark:bg-[#050505] text-gray-800 dark:text-white py-16 transition-colors duration-300 relative border-t border-gray-200 dark:border-white/5">
             <div className="absolute inset-0 bg-gradient-to-t from-violet-100/50 dark:from-violet-900/10 to-transparent pointer-events-none" />
             <div className="container mx-auto px-4 relative z-10">
-                <div className="grid md:grid-cols-4 gap-12 mb-12">
+                <div className="grid md:grid-cols-5 gap-12 mb-12">
                     <div className="md:col-span-2">
                         <div className="flex items-center mb-6">
                             <ThemeImage type="appName" className="h-14 md:h-20 object-contain dark:brightness-100 brightness-0" />
@@ -47,6 +55,21 @@ export const Footer = () => {
                         </h4>
                         <ul className="space-y-4">
                             {footerLinks.map((link, index) => (
+                                <li key={index}>
+                                    <a href={link.href} className="text-gray-600 dark:text-white/60 hover:text-violet-600 dark:hover:text-white transition-colors duration-200 font-medium">
+                                        {link.label}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 className="text-lg font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-pink-400">
+                            {isRTL ? 'قانوني' : 'Legal'}
+                        </h4>
+                        <ul className="space-y-4">
+                            {legalLinks.map((link, index) => (
                                 <li key={index}>
                                     <a href={link.href} className="text-gray-600 dark:text-white/60 hover:text-violet-600 dark:hover:text-white transition-colors duration-200 font-medium">
                                         {link.label}

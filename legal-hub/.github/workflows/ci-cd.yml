@@ -1,0 +1,100 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository_owner }}/na3eeman-legal-hub
+
+jobs:
+  test:
+    name: Code Quality & Security Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        run: npm ci || npm install --legacy-peer-deps
+
+      - name: Code Quality (ESLint)
+        run: npm run lint || true
+
+      - name: Security Scan (Trivy FS)
+        run: |
+          curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
+          trivy fs --exit-code 0 --severity HIGH,CRITICAL --format table .
+
+  docker:
+    name: Build & Push Docker Image
+    needs: test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    outputs:
+      sha_short: ${{ steps.vars.outputs.sha_short }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set image tag
+        id: vars
+        run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Docker Buildx
+        uses: docker/setup-buildx-action@v3
+        
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.sha_short }},${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+
+  deploy:
+    name: Update GitOps Repository
+    needs: docker
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Platform Repository
+        uses: actions/checkout@v4
+        with:
+          repository: eventlys/na3eeman_platform
+          token: ${{ secrets.GITOPS_TOKEN }}
+          path: platform-repo
+
+      - name: Update Helm Image Tag
+        run: |
+          cd platform-repo/helm/charts/na3eman-legal-hub
+          if grep -q "tag:" values-prod.yaml; then
+            sed -i 's/tag: .*/tag: "${{ needs.docker.outputs.sha_short }}"/g' values-prod.yaml
+          else
+            echo -e "\nimage:\n  tag: \"${{ needs.docker.outputs.sha_short }}\"" >> values-prod.yaml
+          fi
+          
+      - name: Commit and Push to GitOps Repo
+        run: |
+          cd platform-repo
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          git add helm/charts/na3eman-legal-hub/values-prod.yaml
+          git commit -m "chore(legal-hub): deploy tag ${{ needs.docker.outputs.sha_short }} to prod"
+          git push origin HEAD

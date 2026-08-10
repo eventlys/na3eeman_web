@@ -13,6 +13,16 @@ import LegalPage from './components/LegalPage';
 import { DynamicLegalPage } from './components/DynamicLegalPage';
 import { BookSalon } from './components/BookSalon';
 import { DeleteAccount } from './components/DeleteAccount';
+import { AuthCallback } from './components/AuthCallback';
+
+import { useEffect } from 'react';
+
+function RedirectToLegalHub() {
+    useEffect(() => {
+        window.location.replace('https://legal.na3eeman.com');
+    }, []);
+    return null;
+}
 
 function LandingPage() {
     return (
@@ -47,11 +57,12 @@ function App() {
             <Header />
             <Routes>
                 <Route path="/" element={<LandingPage />} />
-                <Route path="/legal/*" element={<LegalPage />} />
+                <Route path="/legal/*" element={<RedirectToLegalHub />} />
                 <Route path="/features" element={<Features />} />
                 <Route path="/booking" element={<BookSalon />} />
                 <Route path="/for-business" element={<ForBusiness />} />
                 <Route path="/delete-account" element={<DeleteAccount />} />
+                <Route path="/auth/callback" element={<AuthCallback />} />
             </Routes>
             <Footer />
         </div>

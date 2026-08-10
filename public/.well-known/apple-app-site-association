@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "<YOUR_APPLE_TEAM_ID>.com.example.na3eeman",
+        "paths": ["/auth/callback", "/auth/callback/*"]
+      }
+    ]
+  }
+}

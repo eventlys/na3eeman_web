@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.na3eman.app",
+      "sha256_cert_fingerprints": [
+        "B9:A7:74:55:6A:4C:E6:D6:50:C1:2A:EF:66:F2:D3:64:14:C2:54:7C:9B:3D:CD:50:05:6E:1F:1A:C7:3E:4D:52"
+      ]
+    }
+  }
+]
