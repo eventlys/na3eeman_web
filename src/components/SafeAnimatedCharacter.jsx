@@ -2,11 +2,11 @@
 // import { useLanguage } from '../hooks/useLanguage';
 
 // // Asset Imports
-// import mobMale from '../assets/images/MOB_male.png';
-// import mobMaleFlip from '../assets/images/MOB_male_flip.png';
-// import mobFemale from '../assets/images/MOB_female.png';
-// import chMale from '../assets/images/CH_male.png';
-// import chFemale from '../assets/images/CH_female.png';
+// import mobMale from '../assets/logos/MOB_male.png';
+// import mobMaleFlip from '../assets/logos/MOB_male_flip.png';
+// import mobFemale from '../assets/logos/MOB_female.png';
+// import chMale from '../assets/logos/CH_male.png';
+// import chFemale from '../assets/logos/CH_female.png';
 
 // const characters = {
 //     mobMale,

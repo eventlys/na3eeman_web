@@ -3,12 +3,12 @@ import { useTheme } from '../hooks/useTheme';
 import { useLanguage } from '../hooks/useLanguage';
 
 // Pre-import all necessary assets to ensure they are available in Vite build
-import logoLight from '../assets/images/LOGO_light.png';
-import logoDark from '../assets/images/LOGO_dark.png';
-import enLight from '../assets/images/EN_light.png';
-import enDark from '../assets/images/EN_dark.png';
-import arLight from '../assets/images/AR_light.png';
-import arDark from '../assets/images/AR_dark.png';
+import logoLight from '../assets/logos/main_logo.svg';
+import logoDark from '../assets/logos/LOGO_dark.svg';
+import enLight from '../assets/logos/EN_light.png';
+import enDark from '../assets/logos/EN_dark.png';
+import arLight from '../assets/logos/AR_light.png';
+import arDark from '../assets/logos/AR_dark.png';
 
 const assetMap = {
     logo: {

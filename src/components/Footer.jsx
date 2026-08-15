@@ -8,12 +8,12 @@ export const Footer = () => {
     ];
 
     const legalLinks = [
-        { label: isRTL ? 'الشروط والأحكام للعملاء' : 'Customer Terms', href: `https://legal.na3eeman.com/${isRTL ? 'ar' : 'en'}/customers/terms` },
-        { label: isRTL ? 'الشروط والأحكام للبائعين' : 'Vendor Terms', href: `https://legal.na3eeman.com/${isRTL ? 'ar' : 'en'}/vendors/terms` },
-        { label: isRTL ? 'سياسة الخصوصية' : 'Privacy Policy', href: `https://legal.na3eeman.com/${isRTL ? 'ar' : 'en'}/privacy` },
-        { label: isRTL ? 'سياسة ملفات تعريف الارتباط' : 'Cookie Policy', href: `https://legal.na3eeman.com/${isRTL ? 'ar' : 'en'}/cookies` },
-        { label: isRTL ? 'سياسة الاسترداد والإلغاء' : 'Refund & Cancellation', href: `https://legal.na3eeman.com/${isRTL ? 'ar' : 'en'}/refunds` },
-        { label: isRTL ? 'سياسة الاستخدام المقبول' : 'Acceptable Use', href: `https://legal.na3eeman.com/${isRTL ? 'ar' : 'en'}/acceptable-use` },
+        { label: isRTL ? 'الشروط والأحكام للعملاء' : 'Customer Terms', href: `https://legal.n3eemn.com/${isRTL ? 'ar' : 'en'}/customers/terms` },
+        { label: isRTL ? 'الشروط والأحكام للبائعين' : 'Vendor Terms', href: `https://legal.n3eemn.com/${isRTL ? 'ar' : 'en'}/vendors/terms` },
+        { label: isRTL ? 'سياسة الخصوصية' : 'Privacy Policy', href: `https://legal.n3eemn.com/${isRTL ? 'ar' : 'en'}/privacy` },
+        { label: isRTL ? 'سياسة ملفات تعريف الارتباط' : 'Cookie Policy', href: `https://legal.n3eemn.com/${isRTL ? 'ar' : 'en'}/cookies` },
+        { label: isRTL ? 'سياسة الاسترداد والإلغاء' : 'Refund & Cancellation', href: `https://legal.n3eemn.com/${isRTL ? 'ar' : 'en'}/refunds` },
+        { label: isRTL ? 'سياسة الاستخدام المقبول' : 'Acceptable Use', href: `https://legal.n3eemn.com/${isRTL ? 'ar' : 'en'}/acceptable-use` },
     ];
 
     const socialLinks = [

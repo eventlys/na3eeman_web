@@ -19,7 +19,7 @@ import { useEffect } from 'react';
 
 function RedirectToLegalHub() {
     useEffect(() => {
-        window.location.replace('https://legal.na3eeman.com');
+        window.location.replace('https://legal.n3eemn.com');
     }, []);
     return null;
 }
